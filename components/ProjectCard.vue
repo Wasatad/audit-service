@@ -71,10 +71,8 @@ export default {
   position: relative;
   background-color: #fff;
   padding: 20px 20px 26px 20px;
-  // width: 100%;
   width: calc(33.5% - 15px);
   min-width: 330px;
-  // max-width: 420px;
   border-radius: 15px;
   @media (max-width: 1190px) {
     width: calc(50% - 15px);
@@ -105,7 +103,6 @@ export default {
     }
   }
   .card-img {
-    // width: 380px;
     width: 100%;
     height: 240px;
     overflow: hidden;

@@ -1,7 +1,6 @@
 <template></template>
 
 <script>
-// import { mapMutations } from "vuex";
 export default {
   middleware: ["auth"],
   name: "IndexPage",

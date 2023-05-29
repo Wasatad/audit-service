@@ -70,9 +70,6 @@ export default {
       },
       loginInAction: false,
       authError: false,
-      // Validation
-      // passwordEmty: false,
-      // showAuthError: false,
     };
   },
   methods: {
@@ -111,25 +108,8 @@ export default {
           .classList.remove("hidden");
       } else {
         this.loginInAction = true;
-        // let response = await this.firebaseAuth({
-        //   email: this.email,
-        //   password: this.password,
-        // });
-        // console.log(response);
 
         const auth = getAuth();
-
-        // createUserWithEmailAndPassword(auth, this.email, this.password)
-        //   .then((userCredential) => {
-        //     // Signed in
-        //     const user = userCredential.user;
-        //     // ...
-        //   })
-        //   .catch((error) => {
-        //     const errorCode = error.code;
-        //     const errorMessage = error.message;
-        //     // ..
-        //   });
 
         setPersistence(auth, inMemoryPersistence)
           .then(() => {
@@ -162,21 +142,10 @@ export default {
                       console.log(" all ok");
                       this.$store.commit("setUser", this.user);
                       localStorage.setItem("user", JSON.stringify(this.user));
-                      // console.log(object);
+
                       signOut(auth).then(() => {
                         this.$router.push({ path: "/projects-list" });
                       });
-                      // updateProfile(auth.currentUser, {
-                      //   displayName: "Катерина Ерошина",
-                      //   photoURL:
-                      //     "https://firebasestorage.googleapis.com/v0/b/moab-audit.appspot.com/o/avatars%2Fkaterina.png?alt=media&token=10c06e18-a171-45c1-8330-e8c9588ef4e0",
-                      // })
-                      //   .then(() => {
-                      //     console.log("Profile updated!");
-                      //   })
-                      //   .catch((error) => {
-                      //     console.log(error);
-                      //   });
                     })
                     .catch((e) => {
                       console.log(e);
@@ -186,7 +155,7 @@ export default {
               .catch((e) => {
                 console.log(e);
                 this.loginInAction = false;
-                // console.log(error);
+
                 this.$message.error("Неверный логин или пароль");
                 return;
               });
@@ -293,7 +262,6 @@ export default {
   }
   .hidden {
     opacity: 0;
-    // transition: 0.5s ease-in-out;
   }
 }
 </style>

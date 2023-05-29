@@ -2,7 +2,6 @@
   <div v-if="isReady" class="result-page">
     <h1 class="report-title">
       Аудит сайта
-      <!-- <span style="color: #6941c7">{{ report.name }}</span> -->
       <a :href="currentProject.website" target="blank">{{
         currentProject.name
       }}</a>
@@ -907,13 +906,6 @@
       ></result-section>
     </div>
 
-    <!-- <section-conclusion
-      v-if="ux.conclusion != 'Введите вывод'"
-      v-bind:text="ux.conclusion"
-      v-bind:author="ux.author"
-    >
-    </section-conclusion> -->
-
     <!-- Общий ывывод -->
     <div class="section-header summary-header">
       <div class="section-info">
@@ -950,7 +942,6 @@ export default {
 
   data() {
     return {
-      // template: {},
       activeDevice: 0,
       currentProject: {},
       content: {},
@@ -963,7 +954,6 @@ export default {
         yellow: "#F9D05F",
         green: "#70CFAA",
       },
-      // report: {},
     };
   },
   methods: {
@@ -978,21 +968,14 @@ export default {
     },
   },
   async beforeCreate() {
-    // let projectID = "4643478";
-    // console.log(this.$route);
-    // await this.$store.dispatch("downLoadCurrentProject", this.$route.params.id);
-    // this.report = this.$store.state.currentProject;
-    // console.log(this.report);
     // Считываем ID проекта из роута
     // Делаем запрос к базе, загружаем проект в currentProject
     // Импортируем currentProject из стора, загружаем данные в отчет
-    // await this.$store.dispatch("downLoadCurrentProject", this.$route.params.id);
     await this.$store.dispatch("downLoadCurrentProject", this.$route.params.id);
     this.currentProject = this.$store.state.currentProject;
     this.content = this.$store.state.currentProject.data.content;
     this.pageSpeedReport = this.currentProject.data.perfomance.pageSpeed;
     this.isReady = true;
-    // console.log(this.currentProject);
 
     for (let i = 0; i < this.content.sections.length; i++) {
       this.content.sections[i].questions = this.content.sections[
@@ -1035,50 +1018,7 @@ export default {
       });
     }
   },
-  async mounted() {
-    // for (let i = 0; i < this.content.sections.length; i++) {
-    //   this.content.sections[i].questions = this.content.sections[
-    //     i
-    //   ].questions.filter((question) => {
-    //     return question.answer != "";
-    //   });
-    // }
-    // for (let i = 0; i < this.content.sections.length; i++) {
-    //   this.content.sections = this.content.sections.filter((section) => {
-    //     return section.questions.length > 0;
-    //   });
-    // }
-    // this.ui = this.currentProject.data.ui;
-    // for (let i = 0; i < this.ui.sections.length; i++) {
-    //   this.ui.sections[i].questions = this.ui.sections[i].questions.filter(
-    //     (question) => {
-    //       return question.answer != "";
-    //     }
-    //   );
-    // }
-    // for (let i = 0; i < this.ui.sections.length; i++) {
-    //   this.ui.sections = this.ui.sections.filter((section) => {
-    //     return section.questions.length > 0;
-    //   });
-    // }
-    // this.ux = this.currentProject.data.ux;
-    // for (let i = 0; i < this.ux.sections.length; i++) {
-    //   this.ux.sections[i].questions = this.ux.sections[i].questions.filter(
-    //     (question) => {
-    //       return question.answer != "";
-    //     }
-    //   );
-    // }
-    // for (let i = 0; i < this.ux.sections.length; i++) {
-    //   this.ux.sections = this.ux.sections.filter((section) => {
-    //     return section.questions.length > 0;
-    //   });
-    // }
-  },
-  // async fetch() {
-  //   //Здесь берем уникальный код из адресной строки и по нему ищем нужный аудит в базе, загружаем сюда.
-  //   // this.posts = await this.$http.$get('https://api.nuxtjs.dev/posts')
-  // },
+  async mounted() {},
 };
 </script>
 
@@ -1213,7 +1153,6 @@ export default {
   }
 
   .metrics-header {
-    // border-top: 1px solid #ebebfc;
     margin-top: 56px;
   }
 

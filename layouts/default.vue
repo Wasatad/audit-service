@@ -284,7 +284,6 @@ input:focus {
 .sidebar-panel {
   height: 100vh;
   width: 100%;
-  // margin-left: -330px;
   max-width: 280px;
   position: fixed;
   left: 0;
@@ -396,22 +395,16 @@ input:focus {
 
 .main-container {
   margin: 0 auto;
-  // padding: 0 20px 20px;
   width: 100%;
   max-width: 1440px;
   transition: 0.2s ease-in-out;
 }
-
-// .hidden {
-//   visibility: hidden;
-// }
 
 // Блок "Почему это важно?"
 blockquote {
   border-left: 3px solid rgb(105, 65, 199) !important;
   margin-bottom: 0 !important;
   margin-top: 0 !important;
-  // padding-top: 18px !important;
   padding-left: 36px !important;
   padding-right: 16px !important;
   background-color: rgba(105, 65, 199, 0.04) !important;
@@ -466,10 +459,6 @@ blockquote:has(+ blockquote) {
 blockquote:last-of-type {
   padding-bottom: 24px !important;
 }
-
-// .question .status-green .question-body .quill-editor ~ blockquote {
-//   opacity: 0.2;
-// }
 
 .question .status-green + .question-body blockquote {
   opacity: 0.2;

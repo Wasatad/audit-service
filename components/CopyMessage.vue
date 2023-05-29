@@ -1,11 +1,6 @@
 <template>
   <div>
     <div class="message-wrapper">
-      <!-- <img
-        class="success-icon"
-        src="@/assets/img/icons/icon-success.svg"
-        alt=""
-      /> -->
       <i style="font-size: 18px; color: #6941c7" class="fa-regular fa-copy"></i>
       <div class="message-container">
         <div class="title">Ссылка на отчет скопирована</div>

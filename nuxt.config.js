@@ -19,7 +19,7 @@ export default {
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "MOAB аудит" },
+      { hid: "description", name: "description", content: "аудит" },
       { name: "format-detection", content: "telephone=no" },
     ],
     link: [
@@ -51,8 +51,6 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: "@/plugins/element-ui" },
-    // { src: "@/plugins/vue-quill-editor", mode: "client" },
-    // { src: "~/plugins/vue2-editor.js", mode: "client" },
     { src: "@/plugins/nuxt-quill-plugin", mode: "client" },
   ],
 
@@ -65,9 +63,6 @@ export default {
     scss: ["@assets/styles/scss/*.scss"],
   },
 
-  // Modules: https://go.nuxtjs.dev/config-modules
-  // modules: ["@nuxtjs/axios"],
-  // modules: ["@nuxtjs/axios", "vue2-editor/nuxt"],
   modules: ["@nuxtjs/axios", "cookie-universal-nuxt"],
 
   serverMiddleware: {
@@ -76,7 +71,7 @@ export default {
 
   axios: {
     baseURL:
-      process.env.NODE_ENV == "production" ? "https://80.87.110.223:3000/" : "",
+      process.env.NODE_ENV == "production" ? "https://80.87.110.220:3000/" : "",
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -87,12 +82,6 @@ export default {
         Quill: "quill/dist/quill.js",
       }),
     ],
-    // plugins: [
-    //   new webpack.ProvidePlugin({
-    //     "window.Quill": "vue2-editor/dist/vue2-editor.core.js",
-    //     Quill: "vue2-editor/dist/vue2-editor.core.js",
-    //   }),
-    // ],
 
     transpile: [/^element-ui/],
     extend(config, { isServer, isClient }) {

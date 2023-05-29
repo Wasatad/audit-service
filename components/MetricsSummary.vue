@@ -31,13 +31,9 @@ export default {
   }
   .metrics-text-container {
     width: 100%;
-    // @media (max-width: 1000px) {
-    //   width: 100%;
-    // }
+
     .metrics-text {
-      // max-width: 770px;
       width: 100%;
-      // padding-right: 56px;
       font-size: 16px;
       line-height: 130%;
     }

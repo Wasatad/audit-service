@@ -1,14 +1,7 @@
 import Vuex from "vuex";
 const puppeteer = require("puppeteer");
 import db from "@/assets/firebase/firebaseInit";
-// import firebaseAdmin from "@/assets/firebase/firebaseAdminInit";
-// require("@/assets/firebase/firebaseAdminInit");
-// require("firebase/firestore");
-// import firebase from "firebase";
-// import { currentUser, getIdToken } from "firebase/auth";
-// import { getAuth } from "firebase-admin/auth";
 
-// import { getUserFromCookie, getUserFromSession } from "@/helpers";
 import {
   query,
   getDocs,
@@ -25,8 +18,7 @@ import {
   doc,
   startAt,
 } from "firebase/firestore";
-// import { storage } from "@/assets/firebase/firebaseStorage";
-// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 import {
   getStorage,
   ref,
@@ -58,14 +50,14 @@ const store = () => {
         let isAdmin = false;
         let role = "";
         if (
-          payload.id == "c3EqzuaQdfhyMO0xvtgddfPoilC2" ||
-          payload.id == "gNkddv1NJfRhO7MEQGVnrOLkwaL2"
+          payload.id == "c3EqzuaQdfhyMO30xvtgddfPoilC2" ||
+          payload.id == "gNkddv1NJfRhO7MEQG4VnrOLkwaL2"
         ) {
           isAdmin = true;
         }
-        if (payload.id == "c3EqzuaQdfhyMO0xvtgddfPoilC2") {
+        if (payload.id == "c3EqzudaQdfhyMO0xvtgddfPoilC2") {
           role = "designer";
-        } else if (payload.id == "R8eGSom70APzjMo3PwO2kLa3LtF2") {
+        } else if (payload.id == "R8eGSom70AP4zjMo3PwO2kLa3LtF2") {
           role = "editor";
         }
         state.user.role = role;
@@ -91,7 +83,6 @@ const store = () => {
         let section = state.currentProject.data[payload.chapterName].sections;
         for (let i = 0; i < section.length; i++) {
           if (section[i].name == payload.sectionName) {
-            // console.log(section[i]);
             section[i].questions.push({
               question: "Новый пункт",
               answer: "",
@@ -135,7 +126,6 @@ const store = () => {
         let section = state.template[payload.chapterName].sections;
         for (let i = 0; i < section.length; i++) {
           if (section[i].name == payload.sectionName) {
-            // console.log(section[i]);
             section[i].questions.push({
               question: "Новый пункт",
               answer: "",
@@ -251,7 +241,6 @@ const store = () => {
           headless: true,
         });
         const page = await browser.newPage();
-        // await page.setDefaultNavigationTimeout(0);
         await page.goto(
           "https://nuxtjs.org/docs/directory-structure/store/#the-nuxtserverinit-action",
           {
@@ -450,14 +439,9 @@ const store = () => {
         let projects = collection(db, "projects");
         let searchCurrentQ = query(projects, where("projectID", "==", id));
         let firstDocSnapshot = await getDocs(searchCurrentQ);
-        // firstDocSnapshot.forEach((doc) => {
-        //   context.state.currentProject = doc.data();
-        //   console.log(context.state.currentProject);
-        // });
 
         var bar = new Promise((resolve, reject) => {
           firstDocSnapshot.forEach((doc, index, array) => {
-            // console.log(doc.data());
             context.state.currentProject = doc.data();
             resolve();
           });
@@ -468,17 +452,11 @@ const store = () => {
         });
       },
       async nuxtServerInit({ dispatch }, context) {
-        // console.log(context.route);
-        // console.log(context.route.params.id);
         let projectID = context.route.params.id;
         let currentIsEmpty =
           Object.keys(context.store.state.currentProject).length === 0;
-        // console.log("^^^^^^^");
-        // console.log(projectID);
-        // console.log(currentIsEmpty);
         if (currentIsEmpty && projectID) {
           await dispatch("downLoadCurrentProject", projectID);
-          // console.log("Get It!");
         }
       },
     },

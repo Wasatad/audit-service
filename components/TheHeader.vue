@@ -154,19 +154,12 @@
 
 <script>
 import { mapState } from "vuex";
-// import { getAuth, signOut } from "firebase/auth";
+
 export default {
   data() {
     return {
       mobileMenuVisible: false,
       currUser: {},
-      // projectName: "",
-
-      // Pages
-      // onProjectList: false,
-      // onProjectPage: false,
-      // onUsefulPage: false,
-      // onArchivePage: false,
     };
   },
   computed: {
@@ -175,14 +168,6 @@ export default {
 
   methods: {
     signOut() {
-      // const auth = getAuth();
-      // signOut(auth)
-      //   .then(() => {
-      //     // Sign-out successful.
-      //   })
-      //   .catch((error) => {
-      //     // An error happened.
-      //   });
       fetch("/api/logout")
         .then((res) => {
           console.log(res);
@@ -307,60 +292,11 @@ export default {
     }
   }
 }
-// .header-container {
-//   background-color: #fff;
-//   width: 100%;
-//   transition: 0.2s ease-in-out;
-//   .header-inner {
-//     margin: 0 auto;
-//   }
-// }
-// .maximized {
-//   .header-inner {
-//     padding: 0 20px 0 280px !important;
-//   }
-// }
-
-// .maximized {
-//   .header-inner {
-//     max-width: 1440px;
-//     @media (max-width: 700px) {
-//       padding: 20px !important;
-//     }
-//   }
-// }
-
-// .header-inner {
-//   height: 90px;
-//   width: 100%;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   gap: 16px;
-//   font-size: 14px;
-//   background-color: #fff;
-//   padding: 0 20px 0 300px;
-
-//   transition: 0.2s ease-in-out;
-
-//   @media (max-width: 700px) {
-//     margin-top: 60px !important;
-//     flex-direction: column;
-//     align-items: flex-start;
-//     gap: 20px;
-//     height: auto;
-//     padding: 20px !important;
-//   }
-// }
 
 .header-container {
   transition: 0.2s ease-in-out;
   background-color: #fff;
   width: 100%;
-  // padding: 0 20px 0 280px !important;
-}
-.maximized .header-container {
-  // padding: 0 20px 0 94px !important;
 }
 
 .header-inner {
@@ -386,14 +322,6 @@ export default {
   justify-content: flex-start;
   align-items: center;
   gap: 8px;
-
-  // .el-breadcrumb__item ~ .el-breadcrumb__item:hover {
-  //   // color: $mainPurple !important;
-  // }
-
-  // .is-link:hover {
-  //   color: $mainPurple !important;
-  // }
 }
 
 .profile-info {

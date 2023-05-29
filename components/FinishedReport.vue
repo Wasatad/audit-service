@@ -3,7 +3,6 @@
     <div class="result-page">
       <h1 class="report-title">
         Аудит сайта
-        <!-- <span style="color: #6941c7">{{ report.name }}</span> -->
         <a :href="currentProject.website" target="blank">{{
           currentProject.name
         }}</a>
@@ -105,13 +104,6 @@
           v-bind:sectionName="section.name"
         ></result-section>
       </div>
-
-      <!-- <section-conclusion
-      v-if="ux.conclusion != 'Введите вывод'"
-      v-bind:text="ux.conclusion"
-      v-bind:author="ux.author"
-    >
-    </section-conclusion> -->
     </div>
   </div>
 </template>
@@ -130,26 +122,6 @@ export default {
     };
   },
   methods: {
-    // downloadPDF() {
-    //   const html2PDF = require("jspdf-html2canvas");
-    //   let downloadLink = document.createElement("a");
-    //   downloadLink.setAttribute("download", "CanvasAsImage.png");
-
-    //   let el = document.querySelector(".result-wrapper");
-    //   html2canvas(el, {
-    //     allowTaint: true,
-    //     useCORS: true,
-    //     // scale: "1.2",
-    //   }).then((canvas) => {
-    //     let dataURL = canvas.toDataURL("image/png");
-    //     let url = dataURL.replace(
-    //       /^data:image\/png/,
-    //       "data:application/octet-stream"
-    //     );
-    //     downloadLink.setAttribute("href", url);
-    //     downloadLink.click();
-    //   });
-    // },
     downloadPDF() {
       const html2PDF = require("jspdf-html2canvas");
 

@@ -54,70 +54,6 @@
       <h3 v-else class="question-title">
         {{ question.question }}
       </h3>
-
-      <!-- <el-input
-        class="answer"
-        type="textarea"
-        :autosize="true"
-        resize="none"
-        :rows="2"
-        placeholder="Введите текст комментария"
-        v-model="question.answer"
-        @change="updateAudit"
-      >
-      </el-input> -->
-      <!-- <client-only>
-        <quill-editor
-          :options="editorOption"
-          @focus="showEditPanel"
-          @blur="hideEditPanel"
-          @text-change="updateAudit"
-          useCustomImageHandler
-          @image-added="addImageHandler"
-          @image-removed="removeImageHandler"
-          v-model="question.answer"
-        >
-        </quill-editor>
-      </client-only> -->
-      <!-- <div></div> -->
-      <!-- <client-only>
-        <div ref="editor">
-          <quill-editor
-            @text-change="updateAudit"
-            v-model="question.answer"
-            contentType="html"
-            @focus="showEditPanel"
-            @blur="hideEditPanel"
-          ></quill-editor>
-        </div>
-      </client-only> -->
-
-      <!-- <client-only>
-        <vue-editor
-          :options="editorOption"
-          @focus="showEditPanel"
-          @blur="hideEditPanel"
-          @text-change="updateAudit"
-          useCustomImageHandler
-          @image-added="addImageHandler"
-          @image-removed="removeImageHandler"
-          placeholder="Введите текст комментария"
-          v-model="question.answer"
-        />
-      </client-only> -->
-      <!-- <client-only>
-        <vue-editor
-          :options="editorOption"
-          v-model="question.answer"
-          @text-change="updateAudit"
-          @focus="showEditPanel"
-          @blur="hideEditPanel"
-          useCustomImageHandler
-          @image-added="addImageHandler"
-          @image-removed="removeImageHandler"
-          placeholder="Введите текст комментария"
-        ></vue-editor>
-      </client-only> -->
       <div
         v-if="
           (chapterName == 'content' && user.role == 'editor') ||
@@ -139,9 +75,6 @@
       </div>
       <div v-else v-html="question.answer"></div>
     </div>
-    <!-- <div @click="deleteCurrentQuestion" class="close-icon">
-      <img src="@/assets/img/icons/small-close.svg" alt="" />
-    </div> -->
     <div
       v-if="
         (chapterName == 'content' && user.role == 'editor') ||
@@ -168,43 +101,20 @@
 </template>
 
 <script>
-// import { VueEditor, Quill } from "vue2-editor";
-// import VueEditor from "vue2-editor";
-// import ImageResize from "quill-image-resize-module";
-
-// Quill.register("modules/imageResize", ImageResize);
-
-/////////////
-
-// import "quill/dist/quill.core.css";
-// import "quill/dist/quill.snow.css";
-// import "quill/dist/quill.bubble.css";
-
-// import { quillEditor } from "vue-quill-editor";
-
-////////////
-
 import { mapMutations, mapActions, mapState } from "vuex";
 export default {
   props: ["question", "chapterName", "sectionName"],
-  // components: { VueEditor },
-  // components: {
-  //   quillEditor,
-  // },
+
   data() {
     return {
-      // answer: "",
-      // vue2content: "",
       questionDOMnode: {},
       questionImages: [],
       content: "<p>I am Example</p>",
       editorOption: {
-        // Some Quill options...
         theme: "snow",
         placeholder: "Комментарий...",
         modules: {
           imageResize: true,
-          // imageDrop: true,
           toolbar: [
             [{ font: [] }, { size: [] }],
             ["bold", "italic", "underline", "strike"],
@@ -255,54 +165,19 @@ export default {
       "uploadImageToProject",
       "removeImageFromProject",
     ]),
-
-    // onEditorChange({ quill, html, text }) {
-    //   console.log("editor change!", quill, html, text);
-    // },
     saveCurrentTarget(e) {
       console.log(e);
       this.questionDOMnode = e.target;
     },
     onEditorChange({ quill, html, text, param }) {
-      // console.log("editor change!", quill, html, text);
-      // console.log("editor change!");
-      // console.dir(quill);
       quill.focus();
-
-      // let existingImages = quill.container.querySelectorAll(".ql-editor img");
-      // let list = Array.from(existingImages);
-      // let existingImagesNames = [];
-      // for (let image of list) {
-      //   existingImagesNames.push(image.currentSrc.split("?")[0].slice(-23));
-      // }
-
-      // console.log(existingImagesNames);
-
-      // for (let i = 0; i < this.questionImages.length; i++) {
-      //   const r1 = existingImagesNames.find(
-      //     (image) => image === this.questionImages[i]
-      //   );
-      //   if (r1) {
-      //     // console.log(this.questionImages[i]);
-      //   } else {
-      //     console.log(this.questionImages[i]);
-      //     this.removeImage({ imageID: this.questionImages[i] });
-      //   }
-      // }
     },
 
     async addImageHandler(image, Editor, cursorLocation, resetUploader) {
       console.log("image has added!");
-
-      // this.uploadImage({ file: image }).then((url) => {
-      //   console.log(url);
-      //   Editor.insertEmbed(cursorLocation, "image", url);
-      //   resetUploader();
-      // });
     },
     async removeImageHandler(e) {
       console.log("iamge was removed");
-      // console.log(e);
       let url = e.split("?")[0].slice(-23);
       console.log(url);
       this.removeImageFromProject({ imageID: url });
@@ -458,18 +333,9 @@ export default {
       });
 
       this.updateAudit();
-      // this.$refs.editor.quill.blur();
       setTimeout(() => {
         this.$refs.editor.quill.blur();
       }, 100);
-      // setTimeout(() => {
-      //   // console.log("deleted");
-      //   // let target = document.querySelector(".main-container");
-      //   // console.log(target);
-      //   // target.click();
-      //   console.log(this.$refs.editor.quill);
-      //   this.$refs.editor.quill.blur();
-      // }, 3000);
     },
   },
   mounted() {
@@ -579,9 +445,7 @@ export default {
       animation: show-icon 0.2s;
       visibility: visible !important;
     }
-    // .remove-on-mounted {
-    //   display: none !important;
-    // }
+
     .hidden-icon {
       visibility: hidden;
       animation: hide-icon 0.2s;
@@ -696,56 +560,4 @@ export default {
     }
   }
 }
-// .ql-toolbar {
-//   visibility: hidden;
-//   position: fixed;
-//   top: 0;
-//   // left: 134px;
-//   width: 100%;
-//   left: 50%;
-//   transform: translate(-50%, -100%);
-//   display: flex;
-//   justify-content: center;
-
-//   // max-width: 1000px;
-//   // margin-left: 80px;
-//   z-index: 100;
-//   // width: calc(100% - 300px);
-//   // max-width: 1279px;
-//   // left: -80px;
-//   // max-width: 1110px;
-//   // transform: translate(-100%);
-
-//   // display: flex;
-//   // justify-content: center;
-//   background-color: #fff;
-//   border: none !important;
-//   transition: 0.2s ease-in-out;
-// }
-// // .hide-editing {
-// //   // display: none;
-// //   visibility: hidden;
-// //   position: absolute;
-// // }
-// .show-editing {
-//   // position: static !important;
-//   // visibility: visible !important;
-//   visibility: visible;
-//   // transform: translate(-95px, 0);
-//   box-shadow: 0px 7px 14px rgba(83, 64, 128, 0.09);
-//   transform: translate(-50%, 0);
-// }
-
-// // Text-ediror style
-// .ql-editor {
-//   min-height: 45px !important;
-// }
-// .ql-container {
-//   border: none !important;
-// }
-// .ql-editor.ql-blank {
-//   &:before {
-//     color: #d2d2d2 !important;
-//   }
-// }
 </style>

@@ -101,14 +101,6 @@ export default {
     ...mapActions(["downLoadProjectsList", "createProject", "deleteProject"]),
     async addNewProject() {
       this.newProjectLoading = true;
-      // return new Promise((resolve, reject) => {
-      //   setTimeout(() => {
-      //     this.newProjectDialogVisible = false;
-      //     this.newProjectName = "";
-      //     this.newProjectSite = "";
-      //     resolve;
-      //   }, 4000);
-      // });
       await this.createProject({
         name: this.newProjectName,
         site: this.newProjectSite,

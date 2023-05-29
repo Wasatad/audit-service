@@ -20,11 +20,6 @@
 import { mapMutations } from "vuex";
 export default {
   props: ["question", "sectionName"],
-  data() {
-    return {
-      // answer: "",
-    };
-  },
   computed: {
     iconClass() {
       if (this.question.status == "yellow") {
@@ -46,9 +41,7 @@ export default {
   align-items: flex-start;
   gap: 20px;
 
-  // padding-bottom: 32px;
   padding: 32px 32px 32px 40px;
-  // border-bottom: 1px solid #ebebfc;
 
   img {
     max-width: 100%;

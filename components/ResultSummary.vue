@@ -3,41 +3,6 @@
     <div class="summary-text-container">
       <div class="summary-text" v-html="summary"></div>
     </div>
-    <!-- <div class="summary-form-container">
-      <div class="summary-form">
-        <img
-          class="letter-illustration"
-          src="@/assets/img/letter-illustration.svg"
-          alt=""
-        />
-        <div class="form-title">Обратная связь</div>
-        <div class="form-subtitle">
-          Остались вопросы или хотите обсудить доработки?
-        </div>
-        <el-form ref="form" :model="form" label-width="120px">
-          <el-form-item>
-            <el-input v-model="form.name" placeholder="Ваше имя"></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-input
-              type="textarea"
-              v-model="form.message"
-              placeholder="Текст сообщения"
-            ></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="onSubmit">Отправить</el-button>
-          </el-form-item>
-          <el-checkbox class="policy-checkbox" v-model="policyChecked"
-            >Я даю согласие на обработку моей персональной информации на
-            условиях, определённых
-            <a target="blank" href="https://moab.pro/personal-data/"
-              >Политикой конфиденциальности</a
-            ></el-checkbox
-          >
-        </el-form>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -71,13 +36,11 @@ export default {
     flex-direction: column;
   }
   .summary-text-container {
-    // width: 70%;
     width: 100%;
     @media (max-width: 1000px) {
       width: 100%;
     }
     .summary-text {
-      // max-width: 770px;
       width: 100%;
       padding-right: 32px;
 
@@ -141,7 +104,6 @@ export default {
         .el-input__inner {
           border-radius: 8px;
           height: 50px;
-          // border: 1px solid #e5e5ed;
         }
       }
       .el-textarea {

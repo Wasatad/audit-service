@@ -20,7 +20,6 @@
 import ArchivePreview from "../../components/ArchivePreview.vue";
 import { mapState, mapActions } from "vuex";
 export default {
-  // middleware: ["admin-auth"],
   components: { ArchivePreview },
   name: "IndexPage",
   computed: {

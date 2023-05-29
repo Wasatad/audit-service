@@ -93,21 +93,6 @@ export default {
       },
     };
   },
-  // async fetch() {
-  //   this.posts =  await this.$store.dispatch(
-  //       "downLoadCurrentProject",
-  //       this.$route.params.id
-  //     );
-  // },
-  // async fetch() {
-  //   await this.$store.dispatch("downLoadCurrentProject", this.$route.params.id);
-  // },
-  // async asyncData({ params, $http }) {
-  //   this.audit = await store.dispatch(
-  //     "downLoadCurrentProject",
-  //     route.params.id
-  //   );
-  // },
   computed: {
     ...mapState(["currentProject", "user"]),
   },
@@ -177,21 +162,6 @@ export default {
       this.updateProject();
     },
   },
-  beforeCreate() {
-    // console.log("//////");
-    // console.log(this.currentProject);
-  },
-  async created() {
-    // console.log("----");
-    // console.log(this.currentProject);
-    // console.log(this.$route.params.id);
-    // if (!this.currentProject) {
-    //   await this.$store.dispatch(
-    //     "downLoadCurrentProject",
-    //     this.$route.params.id
-    //   );
-    // }
-  },
 };
 </script>
 
@@ -233,7 +203,6 @@ export default {
 
 .quill-section-textarea {
   background-color: #fff;
-  // padding: 32px;
   border-radius: 12px;
   min-height: 150px;
   margin-bottom: 32px;

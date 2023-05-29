@@ -10,8 +10,6 @@
           @change="updateTemplate"
         >
         </el-input>
-        <!-- <div>{{ questionsSection.name }}</div> -->
-
         <div class="questions-qty">
           {{ questionsSection.questions.length }}
         </div>
@@ -96,7 +94,6 @@ export default {
       console.log(val);
     },
     addNewQuestion() {
-      // console.log(1);
       this.addTemplateQuestion({
         chapterName: this.chapterName,
         sectionName: this.questionsSection.name,
@@ -118,10 +115,8 @@ export default {
     justify-content: space-between;
     align-items: center;
     gap: 24px;
-    // padding: 0 0 24px 0;
     padding: 0 20px;
     height: 70px;
-    // border-bottom: 1px solid #ebebfc;
     margin-bottom: 32px;
     background: rgba(216, 216, 255, 0.32);
     .el-input {
@@ -144,7 +139,6 @@ export default {
       justify-content: flex-end;
       align-items: center;
       color: rgb(143 134 165);
-      // background: rgb(239 233 252);
       border: 1px solid rgb(230 225 241);
       padding: 10px;
       border-radius: 6px;
@@ -153,7 +147,6 @@ export default {
 }
 .template-section {
   background-color: #fff;
-  // padding: 32px;
   border-radius: 8px;
 }
 

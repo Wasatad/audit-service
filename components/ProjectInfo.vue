@@ -1,11 +1,5 @@
 <template>
   <div>
-    <!-- <div v-if="showResult" class="print-container">
-      <finished-report
-        @hideReport="showResult = false"
-        :currentProject="currentProject"
-      ></finished-report>
-    </div> -->
     <div>
       <copy-message
         v-if="copyMessageVisible"
@@ -33,13 +27,6 @@
               icon="fa-light fa-copy main-btn-icon"
               >Копировать ссылку</el-button
             >
-            <!-- <el-button
-              @click="downloadReport"
-              class="copy"
-              type="default"
-              icon="fa-regular fa-copy main-btn-icon"
-              >Скачать .pdf</el-button
-            > -->
           </div>
         </div>
         <div class="project-image">
@@ -53,11 +40,6 @@
 </template>
 
 <script>
-// const { jsPDF } = require("jspdf");
-// import { html2PDF } from "jspdf-html2canvas";
-// import jsPDF from "jspdf";
-// import html2canvas from "html2canvas";
-
 import { mapState } from "vuex";
 import CopyMessage from "@/components/CopyMessage.vue";
 import FinishedReport from "./FinishedReport.vue";
@@ -87,40 +69,10 @@ export default {
       this.copyMessageVisible = false;
     },
     async copyLink() {
-      // console.log(window.location.origin);
-      // console.log(this.$route.params.id);
-      // console.log(location);
       await navigator.clipboard.writeText(
         window.location.origin + "/result/" + this.$route.params.id
       );
       this.copyMessageVisible = true;
-
-      // let content = `${window.location.origin}/result/${this.$route.params.id}`;
-      // console.log(content);
-
-      // const unsecuredCopyToClipboard = (text) => {
-      //   const textArea = document.createElement("textarea");
-      //   textArea.value = text;
-      //   document.body.appendChild(textArea);
-      //   textArea.focus();
-      //   textArea.select();
-      //   try {
-      //     document.execCommand("copy");
-      //   } catch (err) {
-      //     console.error("Unable to copy to clipboard", err);
-      //   }
-      //   document.body.removeChild(textArea);
-      // };
-
-      // const copyToClipboard = (content) => {
-      //   if (window.isSecureContext && navigator.clipboard) {
-      //     navigator.clipboard.writeText(content);
-      //   } else {
-      //     unsecuredCopyToClipboard(content);
-      //   }
-      // };
-
-      // copyToClipboard();
     },
 
     // downloadPDF() {
@@ -168,10 +120,6 @@ export default {
     //   });
     // },
   },
-  mounted() {
-    console.log("=========");
-    console.log(this.currentProject);
-  },
 };
 </script>
 
@@ -182,7 +130,6 @@ export default {
   bottom: 0;
   left: 0;
   transform: translate(0, -100%);
-  // transform: translateY(-100%);
 }
 .about-project-container {
   display: flex;
@@ -238,9 +185,6 @@ export default {
       top: 26px;
       left: 82px;
       background-color: rgb(208, 208, 238);
-      // background: url("@/assets/img/screenshots/screenshot.png");
-      // background-size: cover;
-      // background-repeat: no-repeat;
       width: 490px;
       height: 307px;
 

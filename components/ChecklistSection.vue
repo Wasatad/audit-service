@@ -89,7 +89,6 @@ export default {
       console.log(val);
     },
     addNewQuestion() {
-      // console.log(1);
       this.addQuestion({
         chapterName: this.chapterName,
         sectionName: this.questionsSection.name,
@@ -115,9 +114,6 @@ export default {
       });
       return emptyQuestions.length;
     },
-  },
-  mounted() {
-    // console.log(this.section);
   },
 };
 </script>

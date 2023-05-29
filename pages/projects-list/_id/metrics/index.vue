@@ -51,7 +51,6 @@ export default {
         placeholder: "Комментарий...",
         modules: {
           imageResize: true,
-          // imageDrop: true,
           toolbar: [
             [{ font: [] }, { size: [] }],
             ["bold", "italic", "underline", "strike"],
@@ -94,12 +93,6 @@ export default {
     async addImageHandler(image, Editor, cursorLocation, resetUploader) {
       console.log("image has added!");
     },
-    // async removeImageHandler(e) {
-    //   console.log("iamge was removed");
-    //   let url = e.split("?")[0].slice(-23);
-    //   console.log(url);
-    //   this.removeImage({ imageID: url });
-    // },
     handleBlur(e) {
       this.updateAudit();
 
@@ -134,7 +127,6 @@ export default {
     },
     handleFocus(e) {
       //Переносим все фотки в data
-
       if (this.questionImages.length == 0) {
         let allImages = e.container.querySelectorAll(".ql-editor img");
         let list = Array.from(allImages);
@@ -143,6 +135,7 @@ export default {
         }
       }
       console.log(this.questionImages);
+
       // Показываем панель инструментов
       let editingPanel = e.container.parentNode.querySelector(".ql-toolbar");
       editingPanel.classList.add("show-editing");

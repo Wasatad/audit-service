@@ -1,11 +1,6 @@
-// var cookieParser = require("cookie-parser");
-// const csrf = require("csrf");
-
-// const bodyParser = require("body-parser");
 const express = require("express");
-// const admin = require("firebase-admin");
-
 const puppeteer = require("puppeteer");
+
 const imgbbUploader = require("imgbb-uploader");
 const toUint8Array = require("base64-to-uint8array");
 
@@ -18,10 +13,7 @@ import { getAuth } from "firebase-admin/auth";
 
 app.get("/test/*", async function (req, res) {
   try {
-    // let imageURL = "";
     let url = req.params[0];
-    // let url = `http://${req.params[0]}`;
-    // let url = `http://${req.params[0].replace("-", ".")}`;
     const browser = await puppeteer.launch({
       defaultViewport: {
         width: 1200,
@@ -43,17 +35,11 @@ app.get("/test/*", async function (req, res) {
     await page.setUserAgent(
       "Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0"
     );
-    // await page.setDefaultNavigationTimeout(0);
     await page.goto(url, {
       waitUntil: "networkidle2",
     });
-    // await page.screenshot({
-    //   path: "assets/img/screenshots/screenshot.png",
-    // });
+
     let base64 = await page.screenshot({ encoding: "base64" });
-    // console.log(base64);
-    // const arr = toUint8Array(base64);
-    // console.log(base64.length);
 
     function timeout(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
@@ -73,21 +59,6 @@ app.get("/test/*", async function (req, res) {
 
       res.send(base64);
     }
-
-    // imgbbUploader(
-    //   "5870fc99c75bf9d9dcb06e4ac0790e85",
-    //   "assets/img/screenshots/screenshot.png"
-    // )
-    //   .then((response) => {
-    //     console.log(response);
-    //     console.log(`Handle success: ${response.url}`);
-    //     res.send(response.url);
-    //     return response.url;
-    //   })
-
-    //   .catch((error) => console.error(error));
-
-    // res.send(imageURL);
   } catch (e) {
     console.log(e);
   }
@@ -108,15 +79,10 @@ app.get("/logout", async function (req, res) {
 
 app.post("/login", async function (req, res) {
   try {
-    // console.log("hi from server");
     const { app } = useFirebaseServer();
     const cookies = require("cookie-universal")(req, res);
-    // cookies.parseJSON = false;
 
-    // console.log(req.body.idToken);
-    // const idToken = cookies.get("Authorization");
     const idToken = req.body.idToken;
-    // console.log(idToken);
 
     const expiresIn = 5 * 24 * 60 * 60 * 1000; // 5 дней
     try {
@@ -124,28 +90,13 @@ app.post("/login", async function (req, res) {
         expiresIn,
       });
 
-      // console.log("2222");
-      // console.log(sessionCookie);
-
       const cookiesOptions = {
         maxAge: expiresIn,
         httpOnly: true,
         secure: true,
         path: "/",
       };
-
-      // console.log(sessionCookie);
-      // cookies.set("test", "test message", cookiesOptions);
       cookies.set("session", sessionCookie, cookiesOptions);
-      // cookies.set("session", sessionCookie);
-      // cookies.set("test", "test-body");
-      // cookies.set("test2", "test-test-body", {
-      //   httpOnly: true,
-      //   secure: true,
-      // });
-      // cookies.set("test3", "test-test-body");
-      // console.log("куки-ключ :" + cookies.get("session"));
-      // console.log("куки-тест :" + cookies.get("test"));
 
       res.send({
         statusCode: 200,
@@ -165,8 +116,6 @@ app.post("/checkauthstatus", async function (req, res) {
   try {
     const { app } = useFirebaseServer();
     const cookies = require("cookie-universal")(req, res);
-    // console.log("req");
-    // console.log(req.body);
 
     const sessionCookie = req.body.sessionCookie;
 

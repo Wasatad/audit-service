@@ -41,20 +41,6 @@
           v-else
           v-html="currentProject.data.ui.conclusion"
         ></div>
-
-        <!-- <div class="conclusion-body">
-          <el-input
-            class="answer"
-            type="textarea"
-            :autosize="true"
-            resize="none"
-            :rows="20"
-            placeholder="Введите текст комментария"
-            v-model="currentProject.data.ui.conclusion"
-            @change="updateAudit"
-          >
-          </el-input>
-        </div> -->
       </div>
     </div>
   </div>
@@ -79,7 +65,6 @@ export default {
         placeholder: "Комментарий...",
         modules: {
           imageResize: true,
-          // imageDrop: true,
           toolbar: [
             [{ font: [] }, { size: [] }],
             ["bold", "italic", "underline", "strike"],
@@ -160,7 +145,6 @@ export default {
     },
     handleFocus(e) {
       //Переносим все фотки в data
-
       if (this.questionImages.length == 0) {
         let allImages = e.container.querySelectorAll(".ql-editor img");
         let list = Array.from(allImages);
@@ -177,21 +161,6 @@ export default {
       console.log("updated");
       this.updateProject();
     },
-  },
-  beforeCreate() {
-    // console.log("//////");
-    // console.log(this.currentProject);
-  },
-  async created() {
-    // console.log("----");
-    // console.log(this.currentProject);
-    // console.log(this.$route.params.id);
-    // if (!this.currentProject) {
-    //   await this.$store.dispatch(
-    //     "downLoadCurrentProject",
-    //     this.$route.params.id
-    //   );
-    // }
   },
 };
 </script>
@@ -234,7 +203,6 @@ export default {
 
 .quill-section-textarea {
   background-color: #fff;
-  // padding: 32px;
   border-radius: 12px;
   min-height: 150px;
   margin-bottom: 32px;

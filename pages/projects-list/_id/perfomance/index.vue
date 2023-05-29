@@ -2,7 +2,6 @@
   <div class="project-page perfomance-wrapper">
     <project-info></project-info>
     <project-nav></project-nav>
-    <!-- <el-empty description="Авто-тесты"></el-empty> -->
     <div class="perfomance-container">
       <div class="control-panel">
         <div class="service-logo-container">
@@ -902,7 +901,6 @@ export default {
         placeholder: "Комментарий...",
         modules: {
           imageResize: true,
-          // imageDrop: true,
           toolbar: [
             [{ font: [] }, { size: [] }],
             ["bold", "italic", "underline", "strike"],
@@ -936,7 +934,6 @@ export default {
     ...mapState(["currentProject", "user"]),
 
     pageSpeedLink() {
-      // https://pagespeed.web.dev/report?url=https%3A%2F%2Fmoab.pro%2Fdozor%2F&form_factor=desktop
       let link = this.currentProject.website
         .replace(/\//g, "%2F")
         .replace(/:/g, "%3A");
@@ -956,23 +953,7 @@ export default {
     handleClick(tab, e) {
       console.log(tab);
       console.log(e);
-      // if (tab.index == 0) {
-      //   this.activeDevice = "desktop";
-      // } else {
-      //   this.activeDevice = "mobile";
-      // }
     },
-    // perfomanceNumberColor(value) {
-    //   if (value <= 0.49) {
-    //     return "perfomance-red";
-    //   } else if (value <= 0.5 && value <= 0.89) {
-    //     return "perfomance-yellow";
-    //   } else {
-    //     perfomance - green;
-    //     return "perfomance-green";
-    //   }
-    //   return "perfomance-red";
-    // },
     ...mapActions([
       "setPerfomanceReport",
       "uploadImageToProject",
@@ -1333,9 +1314,6 @@ export default {
       ) {
         this.pageSpeedReport.mobile.cumulativeLayoutShift.status = "green";
       }
-
-      // console.log(desktopPerformanceReport.data);
-      // console.log(this.pageSpeedReport);
       this.reportIsLoading = false;
       this.pageSpeedReport.displayInReport = true;
       this.setPerfomanceReport(this.pageSpeedReport);
@@ -1346,12 +1324,6 @@ export default {
     async addImageHandler(image, Editor, cursorLocation, resetUploader) {
       console.log("image has added!");
     },
-    // async removeImageHandler(e) {
-    //   console.log("iamge was removed");
-    //   let url = e.split("?")[0].slice(-23);
-    //   console.log(url);
-    //   this.removeImage({ imageID: url });
-    // },
     handleBlur(e) {
       this.updateAudit();
 
@@ -1386,7 +1358,6 @@ export default {
     },
     handleFocus(e) {
       //Переносим все фотки в data
-
       if (this.questionImages.length == 0) {
         let allImages = e.container.querySelectorAll(".ql-editor img");
         let list = Array.from(allImages);
@@ -1395,6 +1366,7 @@ export default {
         }
       }
       console.log(this.questionImages);
+
       // Показываем панель инструментов
       let editingPanel = e.container.parentNode.querySelector(".ql-toolbar");
       editingPanel.classList.add("show-editing");
@@ -1405,11 +1377,7 @@ export default {
     },
   },
   mounted() {
-    // setTimeout(() => {
-    //   this.desktopPerformanceReport = this.currentProject.data.perfomance.pageSpeed;
-    // }, 3000);
     this.pageSpeedReport = this.currentProject.data.perfomance.pageSpeed;
-    // console.log(this.currentProject);
   },
 };
 </script>
@@ -1422,9 +1390,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // padding-bottom: 20px;
     margin-bottom: 24px;
-    // border-bottom: 1px solid rgb(217 217 242);
 
     .service-logo-container {
       display: flex;
@@ -1474,7 +1440,6 @@ export default {
         position: absolute;
         left: -20px;
         background-color: rgb(224, 224, 242);
-        // border-right: 1px solid rgb(224, 224, 242);
       }
     }
   }

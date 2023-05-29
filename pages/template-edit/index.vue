@@ -146,7 +146,6 @@ export default {
         placeholder: "Комментарий...",
         modules: {
           imageResize: true,
-          // imageDrop: true,
           toolbar: [
             [{ font: [] }, { size: [] }],
             ["bold", "italic", "underline", "strike"],
@@ -262,59 +261,12 @@ export default {
     } else {
       this.$router.push("/");
     }
-
-    // Mutation Observer
-    // const observer = new MutationObserver(function (mutations_list) {
-    //   mutations_list.forEach(function (mutation) {
-    //     mutation.addedNodes.forEach(function (added_node) {
-    //       console.log(added_node.nodeName);
-    //       if (
-    //         added_node.nodeName == "BLOCKQUOTE" &&
-    //         !added_node.classList.contains("blockquote-title") &&
-    //         added_node.previousSibling.nodeName != "BLOCKQUOTE"
-    //       ) {
-    //         // console.log('#child has been added');
-    //         // console.log(added_node.id);
-    //         // observer.disconnect();
-    //         // let p1 = document.createElement("span");
-    //         // let p2 = document.createElement("br");
-    //         // let p3 = document.createElement("span");
-
-    //         // p1.innerText = "Текст 1";
-    //         // // p2.innerText = "Текст 2";
-    //         // p3.innerHTML = "Текст 3<br>Текст4";
-    //         // // p1.classList.add("blockquote-title");
-
-    //         let blockquote = document.createElement("blockquote");
-    //         blockquote.innerText = "Почему это важно?";
-    //         blockquote.classList.add("blockquote-title");
-
-    //         blockquote.style.color = "#6941C7";
-
-    //         let parent = added_node.previousSibling;
-    //         parent.after(blockquote);
-    //         // added_node.appendChild(p1);
-    //         // added_node.appendChild(p2);
-    //         // added_node.appendChild(p3);
-    //       }
-    //     });
-    //   });
-    // });
-
-    // setTimeout(() => {
-    //   observer.observe(document.querySelector(".metrics-template"), {
-    //     subtree: true,
-    //     childList: true,
-    //   });
-    // }, 3000);
   },
 };
 </script>
 <style lang="scss">
 .template-container {
   margin-top: 64px;
-  // max-width: 1000px;
-  // margin: 64px auto;
   .section-header {
     display: flex;
     justify-content: space-between;

@@ -51,7 +51,6 @@ export default {
         placeholder: "Комментарий...",
         modules: {
           imageResize: true,
-          // imageDrop: true,
           toolbar: [
             [{ font: [] }, { size: [] }],
             ["bold", "italic", "underline", "strike"],
@@ -134,7 +133,6 @@ export default {
     },
     handleFocus(e) {
       //Переносим все фотки в data
-
       if (this.questionImages.length == 0) {
         let allImages = e.container.querySelectorAll(".ql-editor img");
         let list = Array.from(allImages);
@@ -143,6 +141,7 @@ export default {
         }
       }
       console.log(this.questionImages);
+
       // Показываем панель инструментов
       let editingPanel = e.container.parentNode.querySelector(".ql-toolbar");
       editingPanel.classList.add("show-editing");

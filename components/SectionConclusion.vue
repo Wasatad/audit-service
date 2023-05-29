@@ -39,11 +39,6 @@
 <script>
 export default {
   props: ["text", "author"],
-  mounted() {
-    console.log(43433);
-    console.log(this.text);
-    console.log(this.author);
-  },
 };
 </script>
 
