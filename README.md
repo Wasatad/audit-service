@@ -3,7 +3,7 @@
 Веб-приложение для проведения UX/UI аудитов сайтов.
 
 
-### Функциональность
+## Функциональность
 
 Приложение позволяет:
 
@@ -15,13 +15,13 @@
 - Осуществлять замер производитьельности страницы с помощью API [PageSpeedInsights](https://developers.google.com/speed/docs/insights/v5/get-started?hl=ru)
 - Формировать страницу финального отчета
 
-### Интерфейс
+## Интерфейс
 
 ![image](assets/img/Projects-prev.png)
 ![image](assets/img/UX-prev.png)
 ![image](assets/img/PSI-prev.png)
 
-### Использованные инструменты
+## Использованные инструменты
 
 - [Vue.js](https://vuejs.org/) - JS фреймворк
 - [Nuxt.js](https://nuxtjs.org/) - Vue фреймворк
